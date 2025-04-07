@@ -1,0 +1,22 @@
+{
+    "name": "5games",
+    "type": "module",
+    "version": "1.0.0",
+    "scripts": {
+      "dev": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview",
+      "format": "prettier --write ."
+    },
+    "dependencies": {
+      "astro": "^4.0.0",
+      "@astrojs/tailwind": "^4.0.0",
+      "@astrojs/sitemap": "^3.0.0",
+      "@astrojs/image": "^0.16.0"
+    },
+    "devDependencies": {
+      "tailwindcss": "^3.4.0",
+      "prettier": "^3.0.0"
+    }
+  }
+  

@@ -1,0 +1,49 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import GameCard from '../components/GameCard/GameCard.astro';
+import SEO from '../components/SEO/SEO.astro';
+import games from '../data/games.js';
+---
+
+<SEO 
+  title="5Games - Explora los mejores juegos"
+  description="Descubre juegos destacados con imágenes, detalles y enlaces directos a plataformas oficiales. Una experiencia rápida, visual y minimalista." 
+/>
+
+<MainLayout>
+  <section class="homepage">
+    <h1 class="homepage__title">🎮 Explora los mejores juegos</h1>
+    
+    <div class="homepage__grid">
+      {games.map(game => (
+        <GameCard 
+          key={game.slug}
+          name={game.name}
+          image={game.image}
+          slug={game.slug}
+        />
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .homepage {
+    padding: 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .homepage__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .homepage__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+const { total } = Astro.props;
+---
+
+<div class="game-counter">
+  <p class="game-counter__text">
+    Total de juegos disponibles: <span class="game-counter__number">{total}</span>
+  </p>
+</div>
+
+<style>
+  .game-counter {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .game-counter__text {
+    font-size: 1.125rem;
+    color: #f1f5f9;
+  }
+
+  .game-counter__number {
+    font-weight: bold;
+    color: #38bdf8; /* sky-400 */
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+import Header from '../components/Header/Header.astro';
+import Footer from '../components/Footer/Footer.astro';
+import SEO from '../components/SEO/SEO.astro';
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <SEO title={title} description={description} />
+  </head>
+  <body class="main-layout">
+    <Header />
+
+    <main class="main-layout__content">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+
+  <style>
+    :root {
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --bg-dark: #0f172a;
+      --text-light: #f1f5f9;
+    }
+
+    .main-layout {
+      font-family: var(--font-sans);
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-layout__content {
+      flex-grow: 1;
+      padding: 1.5rem 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .main-layout__content {
+        padding: 2rem;
+      }
+    }
+  </style>
+</html>
+

@@ -1,0 +1,37 @@
+---
+const {
+  adCode = '',
+  fallbackMessage = 'Publicidad relevante aquí 👾',
+  slotName = 'default',
+} = Astro.props;
+---
+
+<div class="ad-banner" data-slot={slotName}>
+  {adCode ? (
+    <div class="ad-banner__content" innerHTML={adCode} />
+  ) : (
+    <div class="ad-banner__fallback">{fallbackMessage}</div>
+  )}
+</div>
+
+<style>
+  .ad-banner {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: #1e293b; /* slate-800 */
+    border: 1px dashed #475569; /* slate-600 */
+    text-align: center;
+    border-radius: 0.5rem;
+  }
+
+  .ad-banner__fallback {
+    color: #94a3b8; /* slate-400 */
+    font-size: 0.875rem;
+  }
+
+  .ad-banner__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

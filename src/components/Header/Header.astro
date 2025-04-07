@@ -1,0 +1,63 @@
+<header class="header">
+  <div class="header__container">
+    <a href="/" class="header__logo">5Games</a>
+    <nav class="header__nav" aria-label="Navegación principal">
+      <ul class="header__nav-list">
+        <li><a href="/" class="header__nav-link">Inicio</a></li>
+        <a href="/dmca" class="header__nav-link">DMCA</a>
+        <!-- Ejemplo para futuras secciones:
+        <li><a href="/about" class="header__nav-link">Sobre Nosotros</a></li> -->
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: #1e293b; /* slate-800 */
+    padding: 1rem 0;
+    border-bottom: 1px solid #334155; /* slate-700 */
+  }
+
+  .header__container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #38bdf8; /* sky-400 */
+    text-decoration: none;
+  }
+
+  .header__nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header__nav-link {
+    color: #f1f5f9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .header__nav-link:hover {
+    color: #38bdf8;
+  }
+
+  @media (max-width: 640px) {
+    .header__nav-list {
+      display: none; /* menú responsive opcional futuro */
+    }
+  }
+</style>
+

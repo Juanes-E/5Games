@@ -1,0 +1,89 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import SEO from '../../components/SEO/SEO.astro';
+import games from '../../data/games.js';
+import { getImageAttributes } from '../../utils/imageOptimization.js';
+import AdBanner from '../../components/AdBanner/AdBanner.astro';
+
+export async function getStaticPaths() {
+  return games.map((game) => ({
+    params: { slug: game.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const game = games.find((g) => g.slug === slug);
+
+if (!game) {
+  throw Astro.redirect('/404');
+}
+
+const imgAttrs = getImageAttributes(game.image, `Imagen de ${game.name}`, {
+  className: 'game-details__image'
+});
+---
+
+<MainLayout>
+  <SEO title={game.name} description={game.description} />
+
+  <article class="game-details container">
+    <h1 class="game-details__title">{game.name}</h1>
+
+    <img {...imgAttrs} />
+
+    <div class="game-details__info">
+      <p class="game-details__description">{game.description}</p>
+      <p><strong>Peso:</strong> {game.size}</p>
+      <a href={game.platformUrl} target="_blank" rel="noopener noreferrer" class="game-details__link">
+        Jugar en plataforma →
+      </a>
+    </div>
+
+
+    <AdBanner slotName="game-detail-footer" />
+  </article>
+
+  <style>
+    .container {
+      max-width: 768px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .game-details__title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #f8fafc;
+    }
+
+    .game-details__image {
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .game-details__description {
+      margin: 1rem 0;
+      color: #cbd5e1;
+    }
+
+    .game-details__link {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #38bdf8;
+      color: #0f172a;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .game-details__link:hover {
+      background-color: #0ea5e9;
+    }
+
+  </style>
+</MainLayout>
+
